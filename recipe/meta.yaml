@@ -13,7 +13,7 @@ source:
   {{ hash_type }}: {{ hash_val }}
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
@@ -34,7 +34,7 @@ test:
 
 about:
   home: https://github.com/testing-cabal/traceback2
-  license: PSF 2.0
+  license: PSF-2.0
   license_file: LICENSE
   summary: 'Backports of the traceback module'
   dev_url: https://github.com/testing-cabal/traceback2
