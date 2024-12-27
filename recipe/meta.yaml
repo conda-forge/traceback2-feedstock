@@ -1,7 +1,6 @@
 {% set name = "traceback2" %}
 {% set version = "1.4.0" %}
 {% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
 {% set hash_val = "05acc67a09980c2ecfedd3423f7ae0104839eccb55fc645773e1caa0951c3030" %}
 
 package:
@@ -10,25 +9,27 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash_val }}
+  sha256: {{ hash_val }}
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
     - pbr
 
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - linecache2
     - six
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - traceback2
 
